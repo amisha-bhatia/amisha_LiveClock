@@ -1,8 +1,9 @@
 import "./LiveClock.css"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 function LiveClock() {
     const [time, setTime] = useState(new Date());
+    const { timeFormat } = useContext();
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -15,9 +16,11 @@ function LiveClock() {
 
     return (
         <div className="bg">
+            <video autoPlay loop muted> <source src="/Fireworks.mp4" type="video/mp4" />  Your browser does not support the video tag. </video>
             <div className="clock-container">
-                {time.toLocaleTimeString("en-GB")}
+                {timeFormat ? time.toLocaleTimeString("en-GB") : time.toLocaleTimeString("en-US")}
             </div>
+            <div className=""> </div>
         </div>
     )
 }
