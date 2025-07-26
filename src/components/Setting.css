@@ -1,74 +1,90 @@
-* {
-    box-sizing: border-box;
+/* Icon (cog / close) */
+.setting-icon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background:black;
+  color: white;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.setting-icon:hover{
+  transform:rotate(90deg);
 }
 
-.btn-hide,
-.btn-show {
-    position: absolute;
-    top: 0px;
-    right: 0.5px;
-    z-index: 1000;
-    width: 2rem;
-    height: 35px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
+/* When active → slide to 300px */
+.setting-icon.active {
+  transform: translateX(125px);
+  color:red;
 }
 
-.btn-hide {
-
-    padding-top: 4px;
-    padding-right: 2px;
-    padding-left: 2px;
-    border-radius: 50%;
-}
-
-.btn-show {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-right: 40px;
-    width: 10rem;
-    border-radius: 10%;
-
-}
-
+/* Buttons container */
 .btn-wrapper {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    right: 0;
-    width: 10rem;
-    gap: 30px;
-    top: 45px;
-
+  position: fixed;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  top: 0;
+  left: 0px;
+  padding: 15px;
+  padding-left:0px;
+  padding-top: 0px;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  width:175px;
+}
+.btn-wrapper div{
+  color:white;
+  background: black;
+  height:50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size:25px;
+  padding-left: 5px;
+  
+}
+.btn-wrapper p{
+  
+  color: white;
+  -webkit-text-stroke: 0.5px black;
+  font-size:20px;
+  font-weight: bold;
+  
+}
+/* Show panel when active */
+.btn-wrapper.active {
+  opacity: 1;
+  pointer-events: auto;
+  
 }
 
-.show {
-    background-color: black;
-    color: white;
-    border: 0;
+/* Buttons inside */
+.btn-wrapper button {
+  background: linear-gradient(135deg, #151823 0%, #343335 100%);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.hide {
-    display: none;
-}
-
-.close-btn {
-    color: red;
-    font-size: 20px;
-    margin-left: 50px;
-    text-decoration: solid;
-    background-color: black;
-    border-radius: 50%;
-    border: 1px solid black;
-    position: absolute;
-    top: 5px;
-    right: 0px;
-    z-index: 2000;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-right: 4px;
-
+.btn-wrapper button:hover {
+  background: #f4efef;
+  color:black;
+  transform: translateY(-3x);
 }
